@@ -1,7 +1,12 @@
-<header>
-  <h1>Website Header</h1>
-  <nav>
-    <a href='/'>Home</a>
-    <a href='/about'>About</a>
-  </nav>
+<header class='flex flex-row text-white px-4'>
+  <div class='col flex flex-row align-center items-center'>
+    <div class='header-logo inline'>
+      <h1 class='inline text-4xl'>HauTrank2</h1>
+    </div>
+    <nav class='inline ms-24 space-x-4'>
+      <a href='{{#unless (eq page 'home')}}/{{/unless}}' class="hover:underline {{#if (eq page 'home')}}active text-secondary{{/if}}">Home</a>
+      <a href='{{#unless (eq page 'blog')}}/blog{{/unless}}' class="hover:underline {{#if (eq page 'blog')}}active text-secondary{{/if}}">Blogs</a>
+    </nav>
+    <div class='col'></div>
+  </div>
 </header>
