@@ -40,6 +40,10 @@ form {
   .form-control {
     margin-top: $size-xs;
   }
+
+  .form-error {
+    color: $danger-color;
+  }
 }
 
 button {

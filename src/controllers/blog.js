@@ -1,6 +1,6 @@
 import { Blog } from '~/models/blog';
 import { ContentBlog } from '~/models/blogContent';
-
+import { transformErrorArrayToErrorForm } from '~/validators';
 const blogController = {};
 
 blogController.viewHome = (req, res) => {
@@ -25,23 +25,40 @@ blogController.viewBlog = (req, res) => {
 };
 
 blogController.viewBlogForm = (req, res, next) => {
-  res.render('blog/form');
+  const { values = {} } = req;
+  res.render('blog/form', {
+    formErrors: req.validationErrors,
+    values,
+  });
 };
 
 blogController.createBlog = async (req, res, next) => {
   const { title, description, imageUrl } = req.body;
-  try {
-    const contentBlog = new ContentBlog();
-    await contentBlog.save();
-    const blog = Blog({
+  if (req.validationErrors) {
+    const values = {
       title,
       description,
       imageUrl,
-      blogContentId: contentBlog._id,
+    };
+    const formError = transformErrorArrayToErrorForm(req.validationErrors);
+    res.render('blog/form', {
+      formError,
+      values,
     });
-    await blog.save();
-  } catch (error) {
-    console.log(error);
+  } else {
+    try {
+      const contentBlog = new ContentBlog();
+      await contentBlog.save();
+      const blog = Blog({
+        title,
+        description,
+        imageUrl,
+        blogContentId: contentBlog._id,
+      });
+      await blog.save();
+    } catch (error) {
+      console.log(error);
+    }
   }
   // res.render('blog/form');
 };

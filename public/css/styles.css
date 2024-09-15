@@ -29,6 +29,9 @@ form .form-item.actions {
 form .form-control {
   margin-top: 4px;
 }
+form .form-error {
+  color: #e56b6f;
+}
 
 button.btn {
   padding: 4px 8px;
