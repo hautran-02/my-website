@@ -18,6 +18,7 @@ app.engine(
   '.hbs',
   engine({
     extname: '.hbs',
+    componentsDir: path.join(__dirname, 'views', 'components'),
     helpers: {
       eq: (a, b) => a === b,
       formatDate: (date, format = 'MM/DD/YYYY') => {
