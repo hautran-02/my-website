@@ -1,0 +1,88 @@
+@import 'variables'; // Import variables
+
+input,
+textarea {
+  &.input {
+    border: $thick-md solid $border-color;
+    padding: $size-xs $size-md;
+    border-radius: $size-xs;
+    color: $primary-color;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:focus-visible {
+      outline: $thick-xs solid $primary-color; /* Removes default focus outline */
+    }
+  }
+}
+
+form {
+  .form-item {
+    display: grid;
+
+    &:not(:first-child) {
+      margin-top: $size-md;
+    }
+
+    &.actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      gap: $size-md;
+    }
+  }
+
+  label {
+  }
+
+  .form-control {
+    margin-top: $size-xs;
+  }
+}
+
+button {
+  &.btn {
+    padding: $size-xs $size-md;
+    border: $thick-md solid $border-color;
+    border-radius: $size-xs;
+    color: $neutral-1;
+
+    i {
+      font-size: 1.55rem;
+    }
+
+    &:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    &.btn-primary {
+      background-color: $primary-color;
+      color: $neutral-10;
+      border: none;
+      &:hover {
+        border: none;
+        background-color: $primary-color-light;
+      }
+    }
+
+    &.btn-secondary {
+      background-color: $secondary-color;
+      color: $neutral;
+      border: none;
+      &:hover {
+        background-color: $secondary-color-light;
+      }
+    }
+
+    &.btn-text {
+      color: $neutral;
+      border: none;
+      &:hover {
+        background-color: $neutral-9;
+      }
+    }
+  }
+}

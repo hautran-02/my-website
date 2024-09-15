@@ -3,14 +3,17 @@ import mongoose from 'mongoose';
 import dayjs from 'dayjs';
 import dotenv from 'dotenv';
 import path from 'path';
-import guestRouter from '~/routes/guest';
 import { engine } from 'express-handlebars';
-
+import guestRouter from '~/routes/guest';
+import adminRouter from '~/routes/admin';
+const app = express();
 dotenv.config();
 
-const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_DEFAULT_CLUSTER}.iizgaaw.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority&appName=NodeComplete1`;
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_DEFAULT_CLUSTER}.iizgaaw.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}?retryWrites=true&w=majority`;
 
-const app = express();
+app.use(express.json()); // Middleware to parse JSON bodies
+app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies
+
 app.engine(
   '.hbs',
   engine({
@@ -26,10 +29,10 @@ app.engine(
 );
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'views'));
-
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use(guestRouter);
+app.use('/admin', adminRouter);
 
 mongoose.connect(uri).then(
   () => {

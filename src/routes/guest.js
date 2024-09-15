@@ -1,9 +1,9 @@
 import express from 'express';
-import guestController from '../controllers/guest.js';
+import blogController from '~/controllers/blog';
 
 const guestRouter = express.Router();
 
-guestRouter.get('/', guestController.viewHome);
-guestRouter.get('/blog', guestController.viewBlog);
+guestRouter.get('/', blogController.viewHome);
+guestRouter.get('/blog', blogController.viewBlog);
 
 export default guestRouter;

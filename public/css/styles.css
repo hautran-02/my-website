@@ -1,3 +1,73 @@
+input.input,
+textarea.input {
+  border: 1.6px solid #dbdbdb;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #355070;
+}
+input.input:hover,
+textarea.input:hover {
+  border-color: #355070;
+}
+input.input:focus-visible,
+textarea.input:focus-visible {
+  outline: 0.8px solid #355070; /* Removes default focus outline */
+}
+
+form .form-item {
+  display: grid;
+}
+form .form-item:not(:first-child) {
+  margin-top: 8px;
+}
+form .form-item.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 8px;
+}
+form .form-control {
+  margin-top: 4px;
+}
+
+button.btn {
+  padding: 4px 8px;
+  border: 1.6px solid #dbdbdb;
+  border-radius: 4px;
+  color: rgb(38, 38, 38);
+}
+button.btn i {
+  font-size: 1.55rem;
+}
+button.btn:hover {
+  border-color: #355070;
+  color: #355070;
+}
+button.btn.btn-primary {
+  background-color: #355070;
+  color: #ffffff;
+  border: none;
+}
+button.btn.btn-primary:hover {
+  border: none;
+  background-color: #3d618d;
+}
+button.btn.btn-secondary {
+  background-color: #eaac8b;
+  color: #000000;
+  border: none;
+}
+button.btn.btn-secondary:hover {
+  background-color: #dfbba8;
+}
+button.btn.btn-text {
+  color: #000000;
+  border: none;
+}
+button.btn.btn-text:hover {
+  background-color: rgb(242, 242, 242);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -34,44 +104,6 @@ main {
 
 .text-secondary {
   color: #eaac8b;
-}
-
-button.btn {
-  padding: 4px 8px;
-  border: 1.6px solid #e5e7eb;
-  border-radius: 4px;
-  color: rgb(38, 38, 38);
-}
-button.btn i {
-  font-size: 1.55rem;
-}
-button.btn:hover {
-  border-color: #355070;
-  color: #355070;
-}
-button.btn.btn-primary {
-  background-color: #355070;
-  color: #ffffff;
-  border: none;
-}
-button.btn.btn-primary:hover {
-  border: none;
-  background-color: #3d618d;
-}
-button.btn.btn-secondary {
-  background-color: #eaac8b;
-  color: #000000;
-  border: none;
-}
-button.btn.btn-secondary:hover {
-  background-color: #dfbba8;
-}
-button.btn.btn-text {
-  color: #000000;
-  border: none;
-}
-button.btn.btn-text:hover {
-  background-color: rgb(242, 242, 242);
 }
 
 /*# sourceMappingURL=styles.css.map */
