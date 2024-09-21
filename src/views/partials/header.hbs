@@ -1,12 +1,13 @@
-<header class='flex flex-row text-white px-4'>
-  <div class='col flex flex-row align-center items-center'>
-    <div class='header-logo inline'>
-      <h1 class='inline text-4xl'>HauTrank2</h1>
+<header class='d-flex flex-row text-white px-4 justify-content-between'>
+  <div class='d-flex flex-row align-items-center'>
+    <div class='header-logo d-inline'>
+      <h1 class='d-inline text-contrast'>HauTrank2</h1>
     </div>
-    <nav class='inline ms-24 space-x-4'>
-      <a href='{{#unless (eq page 'home')}}/{{/unless}}' class="hover:underline {{#if (eq page 'home')}}active text-secondary{{/if}}">Home</a>
-      <a href='{{#unless (eq page 'blog')}}/blog{{/unless}}' class="hover:underline {{#if (eq page 'blog')}}active text-secondary{{/if}}">Blogs</a>
+    <nav class='d-inline space-x-4 color-contrast' style="margin-left: 4rem;">
+      <a href='{{#unless (eq page 'home')}}/{{/unless}}' class="hover:underline {{#if (eq page 'home')}}active color-secondary{{/if}}">Home</a>
+      <a href='{{#unless (eq page 'blog')}}/blog{{/unless}}' class="hover:underline {{#if (eq page 'blog')}}active color-secondary{{/if}}">Blogs</a>
+      <a href='{{#unless (eq page 'admin/blog')}}/admin/blog{{/unless}}' class="hover:underline {{#if (eq page 'admin/blog')}}active color-secondary{{/if}}">Blog Management</a>
     </nav>
-    <div class='col'></div>
   </div>
+  <div class='col'></div>
 </header>

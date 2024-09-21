@@ -1,0 +1,49 @@
+<div class='d-flex justify-content-end'>
+  <div class='btn btn-primary'><a href='/admin/blog/form'>Create</a></div>
+</div>
+<table class='table'>
+  <thead>
+    <tr>
+      <th scope='col'>#</th>
+      {{#each columns}}
+        <th scope='col'>{{this.title}}</th>
+      {{/each}}
+      <th scope='col'></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+      <tr class='row-{{this._id}}'>
+        <td scope='row'>{{math @index '+' 1}}</td>
+        <td>{{this.title}}</td>
+        <td>{{this.description}}</td>
+        <td><img
+            src='{{this.imageUrl}}'
+            class='img-thumbnail'
+            alt='{{this.title}}'
+            style='width: 64px; height: 64px;'
+          /></td>
+        <td>{{#if this.active}}
+            Active
+          {{else}}
+            Inactive
+          {{/if}}</td>
+        <td>
+          <div class='d-flex space-x-2'>
+            <button type='button' class='btn btn-outline-dark'>
+              <a href='/admin/blog/form?edit=true&blogId={{this._id}}'>
+                <i class='bx bx-edit-alt'></i>
+              </a>
+            </button>
+            <form action='/admin/blog-delete' method='POST'>
+              <input value='{{this._id}}' name='blogId' type='hidden' />
+              <button type='submit' class='btn btn-outline-dark'>
+                <i class='bx bx-trash'></i>
+              </button>
+            </form>
+          </div>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

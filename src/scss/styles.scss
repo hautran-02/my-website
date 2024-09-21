@@ -1,6 +1,6 @@
 @import 'variables'; // Import variables
-@import 'variables'; // Import variables
 @import 'components';
+@import 'custome-bs';
 
 * {
   margin: 0;
@@ -12,6 +12,10 @@
 body {
   font-family: Helvetica, sans-serif;
   line-height: 1.6;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 header {
@@ -22,10 +26,15 @@ header {
   width: 100%;
 
   nav {
-    a.active {
+    a {
       &:hover {
-        text-decoration: none;
-        cursor: auto;
+        text-decoration: underline;
+      }
+      &.active {
+        &:hover {
+          text-decoration: none;
+          cursor: auto;
+        }
       }
     }
   }
@@ -37,10 +46,14 @@ main {
   padding: 32px 0;
 }
 
-.text-primary {
+.color-primary {
   color: $primary-color;
 }
 
-.text-secondary {
+.color-secondary {
   color: $secondary-color;
+}
+
+.color-contrast {
+  color: $contrast;
 }

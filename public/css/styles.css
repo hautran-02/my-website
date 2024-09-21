@@ -33,42 +33,36 @@ form .form-error {
   color: #e56b6f;
 }
 
-button.btn {
-  padding: 4px 8px;
-  border: 1.6px solid #dbdbdb;
-  border-radius: 4px;
-  color: rgb(38, 38, 38);
+.space-x-0-5 > * + * {
+  margin-left: 2px;
 }
-button.btn i {
-  font-size: 1.55rem;
+
+.space-x-1 > * + * {
+  margin-left: 4px;
 }
-button.btn:hover {
-  border-color: #355070;
-  color: #355070;
+
+.space-x-2 > * + * {
+  margin-left: 8px;
 }
-button.btn.btn-primary {
-  background-color: #355070;
-  color: #ffffff;
-  border: none;
+
+.space-x-3 > * + * {
+  margin-left: 12px;
 }
-button.btn.btn-primary:hover {
-  border: none;
-  background-color: #3d618d;
+
+.space-x-4 > * + * {
+  margin-left: 12px;
 }
-button.btn.btn-secondary {
-  background-color: #eaac8b;
-  color: #000000;
-  border: none;
+
+.space-y-1 > * + * {
+  margin-top: 4px;
 }
-button.btn.btn-secondary:hover {
-  background-color: #dfbba8;
+
+.space-y-2 > * + * {
+  margin-top: 8px;
 }
-button.btn.btn-text {
-  color: #000000;
-  border: none;
-}
-button.btn.btn-text:hover {
-  background-color: rgb(242, 242, 242);
+
+.space-y-3 > * + * {
+  margin-top: 12px;
 }
 
 * {
@@ -82,6 +76,10 @@ body {
   font-family: Helvetica, sans-serif;
   line-height: 1.6;
 }
+body a {
+  color: inherit;
+  text-decoration: none;
+}
 
 header {
   background-color: #355070;
@@ -89,6 +87,9 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
+}
+header nav a:hover {
+  text-decoration: underline;
 }
 header nav a.active:hover {
   text-decoration: none;
@@ -101,12 +102,16 @@ main {
   padding: 32px 0;
 }
 
-.text-primary {
+.color-primary {
   color: #355070;
 }
 
-.text-secondary {
+.color-secondary {
   color: #eaac8b;
+}
+
+.color-contrast {
+  color: white;
 }
 
 /*# sourceMappingURL=styles.css.map */

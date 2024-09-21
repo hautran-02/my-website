@@ -5,12 +5,20 @@ import blogValidator from '~/validators/blogValidator';
 
 const adminRouter = express.Router();
 
-adminRouter.get('/blog/create', blogController.viewBlogForm);
+adminRouter.get('/blog', blogController.viewBlogManagement);
+adminRouter.post('/blog-delete', blogController.deleteBlog);
+adminRouter.get('/blog/form', blogController.viewBlogForm);
 adminRouter.post(
   '/blog/new',
-  blogValidator,
+  blogValidator(),
   checkValidationResults,
   blogController.createBlog
+);
+adminRouter.post(
+  '/blog/edit/:blogId',
+  blogValidator(true),
+  checkValidationResults,
+  blogController.editBlog
 );
 
 export default adminRouter;

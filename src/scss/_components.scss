@@ -46,47 +46,51 @@ form {
   }
 }
 
-button {
-  &.btn {
-    padding: $size-xs $size-md;
-    border: $thick-md solid $border-color;
-    border-radius: $size-xs;
-    color: $neutral-1;
+.space-x-0-5 {
+  > * + * {
+    margin-left: 0.5 * $size-xs;
+  }
+}
 
-    i {
-      font-size: 1.55rem;
-    }
+.space-x-1 {
+  > * + * {
+    margin-left: 1 * $size-xs;
+  }
+}
 
-    &:hover {
-      border-color: $primary-color;
-      color: $primary-color;
-    }
+.space-x-2 {
+  > * + * {
+    margin-left: 2 * $size-xs;
+  }
+}
 
-    &.btn-primary {
-      background-color: $primary-color;
-      color: $neutral-10;
-      border: none;
-      &:hover {
-        border: none;
-        background-color: $primary-color-light;
-      }
-    }
+.space-x-3 {
+  > * + * {
+    margin-left: 3 * $size-xs;
+  }
+}
 
-    &.btn-secondary {
-      background-color: $secondary-color;
-      color: $neutral;
-      border: none;
-      &:hover {
-        background-color: $secondary-color-light;
-      }
-    }
+.space-x-4 {
+  > * + * {
+    margin-left: 3 * $size-xs;
+  }
+}
 
-    &.btn-text {
-      color: $neutral;
-      border: none;
-      &:hover {
-        background-color: $neutral-9;
-      }
-    }
+// Similarly for vertical spacing (space-y)
+.space-y-1 {
+  > * + * {
+    margin-top: 1 * $size-xs;
+  }
+}
+
+.space-y-2 {
+  > * + * {
+    margin-top: 2 * $size-xs;
+  }
+}
+
+.space-y-3 {
+  > * + * {
+    margin-top: 3 * $size-xs;
   }
 }

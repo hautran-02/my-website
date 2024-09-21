@@ -1,39 +1,39 @@
-<div class='container mx-auto px-4'>
-  <form action='/admin/blog/new' method='POST' novalidate>
-    <div class="form-item">
-      <label for='title'>Title:</label>
-      <input class='form-control input' type='text' id='title' name='title' required value="{{values.title}}" />
-      <p class="form-error">
-        {{formError.title}}
-      </p>
-    </div>
+<form style="max-width: 800px;" action='{{#if isEdit}}/admin/blog/edit/{{values._id}}{{else}}/admin/blog/new{{/if}}' method='POST' novalidate enctype="multipart/form-data">
+  <div class="form-item">
+    <label for='title'>Title:</label>
+    <input class='form-control input' type='text' id='title' name='title' required value="{{values.title}}" />
+    <p class="form-error">
+      {{formError.title}}
+    </p>
+  </div>
 
-    <div class="form-item">
-      <label for='description'>Description:</label>
-      <textarea
-        class='form-control input'
-        id='description'
-        name='description'
-        required
-        value="{{values.description}}"
-      >
-      </textarea>
-      <p class="form-error">
-        {{formError.description}}
-      </p>
-    </div class="form-item">
+  <div class="form-item">
+    <label for='description'>Description:</label>
+    <textarea
+      class='form-control input'
+      id='description'
+      name='description'
+      required
+    >{{values.description}}</textarea>
+    <p class="form-error">
+      {{formError.description}}
+    </p>
+  </div class="form-item">
 
-    <div class="form-item">
-      <label for='imageUrl'>Image URL:</label>
-      <input class='form-control input' type='text' id='imageUrl' name='imageUrl' value="{{values.imageUrl}}" />
-      <p class="form-error">
-        {{formError.imageUrl}}
-      </p>
-    </div>
+  <div class="form-item">
+    <label for="formFile" class="form-label">Image</label>
+    <input class="form-control" type="file" id="formFile" name="image" required>
+  </div>
 
-    <div class="form-item actions">
-      <button type='button' class='btn btn-text'>Cancel</button>
-      <button type='submit' class='btn btn-primary'>Create Blog</button>
-    </div>
-  </form>
-</div>
+  {{#if values.imageUrl}}
+  <div class="img my-2">
+    <img src="{{values.imageUrl}}" alt="Blog image" width="200" height="200">
+  </div>
+  <input type="hidden" name="imageUrl" value="{{values.imageUrl}}">
+  {{/if}}
+
+  <div class="form-item actions">
+    <button type='button' class='btn btn-text'><a href=".">Cancel</a></button>
+    <button type='submit' class='btn btn-primary'>{{#if isEdit}}Edit{{else}}Create{{/if}}</button>
+  </div>
+</form>
