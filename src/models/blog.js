@@ -20,10 +20,17 @@ const blogSchema = new Schema(
       required: false,
       default: null,
     },
-    blogContentId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: 'BlogContent',
+    blogContents: {
+      quill: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'BlogContent',
+      },
+      markdown: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'BlogContent',
+      },
     },
     active: {
       type: Boolean,
@@ -34,4 +41,3 @@ const blogSchema = new Schema(
   { timestamps: true, collection: 'Blog' }
 );
 export const Blog = mongoose.model('Blog', blogSchema);
-

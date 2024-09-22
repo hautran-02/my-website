@@ -1,6 +1,6 @@
 import { BLOG_TABLE } from '~/constants/blog';
 import { Blog } from '~/models/blog';
-import { ContentBlog } from '~/models/blogContent';
+import { BlogContent } from '~/models/blogContent';
 import fileUtil from '~/utils/fileUtil';
 import { transformErrorArrayToErrorForm } from '~/validators';
 
@@ -14,6 +14,23 @@ blogController.viewBlog = async (req, res) => {
   try {
     const blogs = await Blog.find({ active: true }).lean();
     res.render('blog/index', { page: 'blog', blogs });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+blogController.viewBlogContent = async (req, res) => {
+  try {
+    const blogId = req.params.blogId;
+    const blog = await Blog.findById(blogId).lean();
+    if (!blog) {
+      res
+        .status(404)
+        .send({ message: 'Could not find blog with id ' + blogId });
+    }
+    const blogCtnId = blog.blogContents.quill;
+    const blogContent = await BlogContent.findById(blogCtnId).lean();
+    res.render('blog/view', { content: JSON.stringify(blogContent.content) });
   } catch (error) {
     console.log(error);
   }
@@ -33,6 +50,33 @@ blogController.viewBlogForm = async (req, res, next) => {
       values,
       isEdit,
     });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+blogController.viewBlogEditor = async (req, res, next) => {
+  try {
+    const blogId = req.params.blogId;
+    const blog = await Blog.findById(blogId).lean();
+    res.render('blog/editor', { blog });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+blogController.editBlogContent = async (req, res, next) => {
+  try {
+    const blogId = req.params.blogId;
+    const content = req.body.content;
+    console.log(req.body);
+    console.log(req.params.blogId);
+    const blogContent = await BlogContent.findByIdAndUpdate(blogId, {
+      content,
+    });
+    console.log('content', content);
+    console.log(blogContent.lean());
+    res.status(200).send({ message: `Save blog successfully ${blogId}` });
   } catch (error) {
     console.log(error);
   }
@@ -59,6 +103,19 @@ blogController.deleteBlog = async (req, res, next) => {
   }
 };
 
+blogController.changeActive = async (req, res, next) => {
+  try {
+    const blogId = req.params.blogId;
+    const blog = await Blog.findById(blogId).exec();
+    await Blog.findByIdAndUpdate(blogId, {
+      active: !blog.active,
+    });
+    res.redirect('/admin/blog');
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 blogController.createBlog = async (req, res, next) => {
   const { title, description } = req.body;
   if (req.validationErrors) {
@@ -75,13 +132,27 @@ blogController.createBlog = async (req, res, next) => {
     try {
       const file = req.file;
       const imageUrl = '/' + file.path;
-      const contentBlog = new ContentBlog();
-      await contentBlog.save();
+      const contentBlogMd = new BlogContent({
+        type: 'markdown',
+      });
+      await contentBlogMd.save();
+      const contentBlogHtml = new BlogContent({
+        type: 'html',
+      });
+      await contentBlogHtml.save();
+      const contentBlogQuill = new BlogContent({
+        type: 'quill',
+      });
+      await contentBlogQuill.save();
       const blog = Blog({
         title,
         description,
         imageUrl,
-        blogContentId: contentBlog._id,
+        blogContents: {
+          markdown: contentBlogMd._id,
+          html: contentBlogHtml._id,
+          quill: contentBlogQuill._id,
+        },
       });
       await blog.save();
       res.redirect('/admin/blog');
@@ -110,7 +181,6 @@ blogController.editBlog = async (req, res, next) => {
       const file = req.file;
       let imageUrl = '';
       if (file) {
-        console.log(req.body.imageUrl);
         fileUtil.deleteFile(req.body.imageUrl.slice(1)); // remove / on first
         imageUrl = '/' + file.path;
       } else {

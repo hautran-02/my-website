@@ -23,11 +23,24 @@
             alt='{{this.title}}'
             style='width: 64px; height: 64px;'
           /></td>
-        <td>{{#if this.active}}
-            Active
-          {{else}}
-            Inactive
-          {{/if}}</td>
+        <td>
+          <div class='d-flex space-x-1'>
+            {{#if this.active}}
+              Active
+            {{else}}
+              Inactive
+            {{/if}}
+            <form
+              class='ms-1'
+              action='/admin/blog/change-active/{{this._id}}'
+              method='post'
+            >
+              <button type='submit' class='btn btn-outline-dark'>
+                <i class='bx bx-rotate-right'></i>
+              </button>
+            </form>
+          </div>
+        </td>
         <td>
           <div class='d-flex space-x-2'>
             <button type='button' class='btn btn-outline-dark'>
@@ -37,10 +50,57 @@
             </button>
             <form action='/admin/blog-delete' method='POST'>
               <input value='{{this._id}}' name='blogId' type='hidden' />
-              <button type='submit' class='btn btn-outline-dark'>
+              <button
+                type='button'
+                class='btn btn-outline-dark'
+                data-bs-toggle='modal'
+                data-bs-target='#deleteBlogModal'
+              >
                 <i class='bx bx-trash'></i>
               </button>
+              <div
+                class='modal fade'
+                id='deleteBlogModal'
+                tabindex='-1'
+                aria-labelledby='exampleModalLabel'
+                aria-hidden='true'
+              >
+                <div class='modal-dialog modal-dialog-centered'>
+                  <div class='modal-content'>
+                    <div class='modal-header'>
+                      <h1 class='modal-title fs-5' id='exampleModalLabel'>Delete
+                        blog</h1>
+                      <button
+                        type='button'
+                        class='btn-close'
+                        data-bs-dismiss='modal'
+                        aria-label='Close'
+                      ></button>
+                    </div>
+                    <div class='modal-body'>
+                      Do you want to delete blog
+                      {{this._id}}
+                    </div>
+                    <div class='modal-footer'>
+                      <button
+                        type='button'
+                        class='btn btn-secondary'
+                        data-bs-dismiss='modal'
+                      >Close</button>
+                      <button
+                        type='submit'
+                        class='btn btn-primary'
+                      >Confirm</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
+            <button type='button' class='btn btn-outline-dark'>
+              <a href='/admin/blog/editor/{{this._id}}'>
+                <i class='bx bxs-edit'></i>
+              </a>
+            </button>
           </div>
         </td>
       </tr>

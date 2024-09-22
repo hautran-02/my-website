@@ -61,6 +61,7 @@ app.engine(
           '%': lvalue % rvalue,
         }[operator];
       },
+      jsonStringtify: (obj) => JSON.stringify(obj),
     },
   })
 );

@@ -8,6 +8,7 @@ const adminRouter = express.Router();
 adminRouter.get('/blog', blogController.viewBlogManagement);
 adminRouter.post('/blog-delete', blogController.deleteBlog);
 adminRouter.get('/blog/form', blogController.viewBlogForm);
+adminRouter.get('/blog/editor/:blogId', blogController.viewBlogEditor);
 adminRouter.post(
   '/blog/new',
   blogValidator(),
@@ -20,5 +21,7 @@ adminRouter.post(
   checkValidationResults,
   blogController.editBlog
 );
+adminRouter.post('/blog/change-active/:blogId', blogController.changeActive);
+adminRouter.post('/blog/edit-content/:blogId', blogController.editBlogContent);
 
 export default adminRouter;

@@ -1,11 +1,9 @@
-<div class='row mb-4'>
-  <button class='btn btn-primary'><a href='/admin/blog/create'>Create blog</a></button>
-</div>
+<div class="row">
   {{#if blogs.length}}
     {{#each blogs}}
-    <div class='grid grid-cols-12 gap-6'>
+      <div class='col-4'>
         <article
-          class='card card-blog rounded-lg col-span-3 border-solid border-2'
+          class='card card-blog rounded-lg col-span-3 border-1'
         >
           <div class='card-header border-b p-3'>
             <p class='text-xl font-semibold text-neutral-700'>{{this.title}}</p>
@@ -19,14 +17,14 @@
             <img
               src='{{this.imageUrl}}'
               alt='{{this.title}}'
-              style='width: 2100%; height: auto;'
-              class='py-2'
+              style='width: auto; height: 180px;'
+              class='py-2 object-fit-contain'
             />
             <p class='text-neutral-600'>{{this.description}}</p>
           </div>
-          <div class='card-footer p-3 border-top flex space-x-2 justify-between'>
+          <div class='card-footer p-3 border-top d-flex justify-content-between'>
             <div class='space-x-2 flex'>
-              <button class='btn btn-primary'>View</button>
+              <button class='btn btn-dark'><a href="/blog/view/{{this._id}}">View</a></button>
             </div>
             <div class='space-x-2 flex'>
               <button class='btn'>
@@ -40,3 +38,4 @@
   {{else}}
     {{> empty message="No blogs available right now"}}
   {{/if}}
+</div>
