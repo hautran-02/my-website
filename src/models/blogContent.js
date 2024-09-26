@@ -7,7 +7,7 @@ const blogSchema = new Schema(
     type: {
       type: String,
       default: 'markdown',
-      enum: ['markdown', 'html', 'quill'],
+      enum: ['markdown', 'quill'],
     },
     content: {
       type: Schema.Types.Mixed,

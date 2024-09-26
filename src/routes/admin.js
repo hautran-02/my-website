@@ -1,4 +1,5 @@
 import express from 'express';
+import multer from 'multer';
 import blogController from '~/controllers/blog';
 import { checkValidationResults } from '~/validators';
 import blogValidator from '~/validators/blogValidator';
@@ -22,6 +23,7 @@ adminRouter.post(
   blogController.editBlog
 );
 adminRouter.post('/blog/change-active/:blogId', blogController.changeActive);
-adminRouter.post('/blog/edit-content/:blogId', blogController.editBlogContent);
+adminRouter.post('/blog/edit-content/:blogContentId', blogController.editBlogContent);
 
+adminRouter.post('/blog/upload/:blogContentId', blogController.uploadImg);
 export default adminRouter;

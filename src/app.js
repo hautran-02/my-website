@@ -24,6 +24,7 @@ const fileStorage = multer.diskStorage({
     );
   },
 });
+
 const fileFilter = (req, file, cb) => {
   const filetypes = /jpeg|jpg|png|gif/;
   const mimetype = filetypes.test(file.mimetype);
@@ -34,9 +35,10 @@ const fileFilter = (req, file, cb) => {
     cb(new Error('Only images are allowed'));
   }
 };
+
 app.use(multer({ storage: fileStorage, fileFilter }).single('image'));
 
-app.use(express.json()); // Middleware to parse JSON bodies
+app.use(express.json({ limit: '50mb' })); // Middleware to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies
 
 app.engine(
