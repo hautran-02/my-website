@@ -24,6 +24,13 @@
             style='width: 64px; height: 64px;'
           /></td>
         <td>
+          <div class='d-flex flex-wrap space-x-2'>
+            {{#each this.tags}}
+              <span style="font-size: 14px;" class='badge text-bg-info fw-medium'>{{this}}</span>
+            {{/each}}
+          </div>
+        </td>
+        <td>
           <div class='d-flex space-x-1'>
             {{#if this.active}}
               Active

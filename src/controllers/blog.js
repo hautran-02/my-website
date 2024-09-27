@@ -183,7 +183,8 @@ blogController.changeActive = async (req, res, next) => {
 };
 
 blogController.createBlog = async (req, res, next) => {
-  const { title, description } = req.body;
+  const { title, description, tags } = req.body;
+  console.log(req.body);
   if (req.validationErrors) {
     const values = {
       title,
@@ -210,6 +211,7 @@ blogController.createBlog = async (req, res, next) => {
         title,
         description,
         imageUrl,
+        tags,
         blogContents: {
           markdown: contentBlogMd._id,
           quill: contentBlogQuill._id,

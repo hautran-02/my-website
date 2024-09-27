@@ -20,6 +20,10 @@ const blogSchema = new Schema(
       required: false,
       default: null,
     },
+    tags: {
+      type: [String],
+      default: [],
+    },
     blogContents: {
       quill: {
         type: Schema.Types.ObjectId,

@@ -15,4 +15,8 @@ export const BLOG_TABLE = [
     key: 'active',
     title: 'Active',
   },
+  {
+    key: 'tags',
+    title: 'Tags',
+  },
 ];
