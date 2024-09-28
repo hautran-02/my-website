@@ -1,34 +1,32 @@
-<div class="row">
+<div class="columns">
   {{#if blogs.length}}
     {{#each blogs}}
-      <div class='col-4'>
+      <div class='column is-one-third is-col-min-1'>
         <article
-          class='card card-blog rounded-lg col-span-3 border-1'
+          class='card card-blog rounded-4 col-span-3 border'
         >
-          <div class='card-header border-b p-3'>
-            <p class='text-xl font-semibold text-neutral-700'>{{this.title}}</p>
+          <div class='card-header border-bottom p-3 is-flex is-justify-content-space-between'>
+            <h4>{{this.title}}</h4>
+            <span>{{formatDate this.createdAt null}}</span>
           </div>
           <div class='card-body p-3'>
-            <p class='text-neutral-400'>
-              <span>
-                Public time:
-              </span>
-              <span>{{formatDate this.createdAt null}}</span></p>
             <img
               src='{{this.imageUrl}}'
               alt='{{this.title}}'
-              style='width: auto; height: 180px;'
-              class='py-2 object-fit-contain'
+              style='height: 180px;'
+              class='py-2 object-fit-contain w-100'
             />
             <p class='text-neutral-600'>{{this.description}}</p>
           </div>
-          <div class='card-footer p-3 border-top d-flex justify-content-between'>
+          <div class='card-footer p-3 border-top is-flex is-justify-content-space-between'>
             <div class='space-x-2 flex'>
-              <button class='btn btn-dark'><a href="/blog/view/{{this._id}}">View</a></button>
+              <button class='button is-primary'><a href="/blog/view/{{this._id}}">View</a></button>
             </div>
             <div class='space-x-2 flex'>
-              <button class='btn'>
-                <i class='bx bx-cog'></i>
+              <button class='button'>
+                <span class='icon is-small'>
+                  <i class='bx bx-cog'></i>
+                </span>
               </button>
             </div>
           </div>

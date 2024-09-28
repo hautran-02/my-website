@@ -1,38 +1,59 @@
-$primary-color: #355070;
-$primary-color-light: #3d618d;
+// Define individual color maps
+$primary-colors: (
+  base: hsl(198, 100%, 70%),
+  light: hsla(200, 82%, 89%, 0.699),
+  dark: hsl(198, 100%, 29%),
+);
 
-$secondary-color: #eaac8b;
-$secondary-color-light: #dfbba8;
-$secondary-color-heavy: rgb(248, 89, 3);
+$secondary-colors: (
+  base: #eaac8b,
+  light: #dfbba8,
+  heavy: rgb(248, 89, 3),
+);
 
-$danger-color: #e56b6f;
-// Hex Codes: #355070 // #6d597a // #b56576 // #e56b6f // #eaac8b
-$neutral: #000000; // Black
-$neutral-1: rgb(38, 38, 38); // Very dark gray
-$neutral-2: rgb(64, 64, 64); // Dark gray
-$neutral-3: rgb(89, 89, 89); // Gray
-$neutral-4: rgb(115, 115, 115); // Medium gray
-$neutral-5: rgb(140, 140, 140); // Light gray
-$neutral-6: rgb(166, 166, 166); // Light-medium gray
-$neutral-7: rgb(191, 191, 191); // Lighter gray
-$neutral-8: rgb(217, 217, 217); // Very light gray
-$neutral-9: rgb(242, 242, 242); // Near white
-$neutral-10: #ffffff; // White
+$danger-colors: (
+  base: #e56b6f,
+);
 
-$contrast: white;
+// Neutral colors can also be mapped separately
+$neutral-colors: (
+  0: #000000,
+  // Black
+  1: rgb(38, 38, 38),
+  // Very dark gray
+  2: rgb(64, 64, 64),
+  // Dark gray
+  3: rgb(89, 89, 89),
+  // Gray
+  4: rgb(115, 115, 115),
+  // Medium gray
+  5: rgb(140, 140, 140),
+  // Light gray
+  6: rgb(166, 166, 166),
+  // Light-medium gray
+  7: rgb(191, 191, 191),
+  // Lighter gray
+  8: rgb(217, 217, 217),
+  // Very light gray
+  9: rgb(242, 242, 242),
+  // Near white
+  10: #ffffff,
+  // White
+);
+
 $border-color: #dbdbdb;
 
-$size-xxs: 2px;
-$size-xs: 4px;
-$size-md: 8px;
-$size-lg: 16px;
-$size-xl: 32px;
-$size-xxl: 48px;
+$sizes: (
+  xxs: 2px,
+  xs: 4px,
+  md: 8px,
+  lg: 16px,
+  xl: 32px,
+  xxl: 48px,
+);
 
-$thick-xs: 0.8px;
-$thick-md: 1.6px;
-$thick-lg: 2.4px;
-
-$theme-colors: (
-  'primary': $primary-color,
+$thickness: (
+  xs: 0.8px,
+  md: 1.6px,
+  lg: 2.4px,
 );

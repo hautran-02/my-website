@@ -1,10 +1,10 @@
 <form method='post' action='/admin/blog/edit-content/{{blog._id}}'>
-  <div class='d-flex justify-content-between align-items-center'>
+  <div class='is-flex is-justify-content-space-between is-align-items-center'>
     <h1 class='mb-3 d-inline'>{{blog.title}}</h1>
     <button
       type='button'
-      id='saveBtn'
-      class='btn btn-primary'
+      id='savebutton'
+      class='button button-primary'
       onclick='onSaveBlogContent({{jsonStringtify blog}})'
     >Save</button>
   </div>

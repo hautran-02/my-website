@@ -1,0 +1,70 @@
+@import 'variables';
+
+.border {
+  border: 1px solid map-get($neutral-colors, 9);
+}
+
+.border-top {
+  border-top: 1px solid map-get($neutral-colors, 9);
+}
+
+.border-bottom {
+  border-bottom: 1px solid map-get($neutral-colors, 9);
+}
+
+.border-left {
+  border-left: 1px solid map-get($neutral-colors, 9);
+}
+
+.border-right {
+  border-right: 1px solid map-get($neutral-colors, 9);
+}
+
+.space-x-0-5 {
+  > * + * {
+    margin-left: 0.5 * map-get($sizes, xs);
+  }
+}
+
+.space-x-1 {
+  > * + * {
+    margin-left: 1 * map-get($sizes, xs);
+  }
+}
+
+.space-x-2 {
+  > * + * {
+    margin-left: 2 * map-get($sizes, xs);
+  }
+}
+
+.space-x-3 {
+  > * + * {
+    margin-left: 3 * map-get($sizes, xs);
+  }
+}
+
+.space-x-4 {
+  > * + * {
+    margin-left: 3 * map-get($sizes, xs);
+  }
+}
+
+// Similarly for vertical spacing (space-y)
+.space-y-1 {
+  > * + * {
+    margin-top: 1 * map-get($sizes, xs);
+  }
+}
+
+.space-y-2 {
+  > * + * {
+    margin-top: 2 * map-get($sizes, xs);
+  }
+}
+
+.space-y-3 {
+  > * + * {
+    margin-top: 3 * map-get($sizes, xs);
+  }
+}

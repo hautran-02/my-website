@@ -1,28 +1,41 @@
 <form class="row g-3" style="max-width: 800px;" action='{{#if isEdit}}/admin/blog/edit/{{values._id}}{{else}}/admin/blog/new{{/if}}' method='POST' novalidate enctype="multipart/form-data">
-  <div class="form-group">
-    <label for='title'>Title:</label>
-    <input class='form-control input' type='text' id='title' name='title' required value="{{values.title}}" />
-    <p class="valid-feedback">
+  <div class="field">
+    <label class="label"for='title'>Title:</label>
+    <div class="control">
+      <input class='input' type='text' id='title' name='title' required value="{{values.title}}" />
+    </div>
+    <p class="help is-danger">
       {{formError.title}}
     </p>
   </div>
 
-  <div class="form-group">
-    <label for='description'>Description:</label>
-    <textarea
-      class='form-control input'
-      id='description'
-      name='description'
-      required
-    >{{values.description}}</textarea>
-    <p class="valid-feedback">
+  <div class="field">
+    <label class="label"for='description'>Description:</label>
+    <div class="control">
+      <textarea
+        class='input'
+        id='description'
+        name='description'
+        required
+      >{{values.description}}</textarea>
+    </div>
+    <p class="help is-danger">
       {{formError.description}}
     </p>
-  </div class="form-group">
+  </div class="field">
 
-  <div class="form-group">
-    <label for="formFile" class="form-label">Image</label>
-    <input class="form-control" type="file" id="formFile" name="image" required>
+  <div class="field">
+    <div class="file">
+      <label class="label"class="file-label">
+        <input class="file-input" type="file" id="formFile" name="image" required />
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label"> Choose a image.., </span>
+        </span>
+      </label>
+    </div>
   </div>
 
   {{#if values.imageUrl}}
@@ -32,22 +45,22 @@
   <input type="hidden" name="imageUrl" value="{{values.imageUrl}}">
   {{/if}}
 
-  <div class="form-group">
-    <label for="tags-input">Tags</label>
+  <div class="field">
+    <label class="label"for="tags-input">Tags</label>
     <div id="tags-input" class="row gx-3 gy-2">
       {{#each values.tags}}
-        <div class="tag-input col-6 d-flex space-x-2 align-items-center">
-          <input type="text" class="form-control" name="tags[]" value="{{this}}" placeholder="Enter a tag">
-          <button class="btn btn-outline-danger" type="button"><i class='bx bx-trash'></i></button> 
+        <div class="tag-input col-6 is-flex space-x-2 is-align-items-center">
+          <input type="text" class="" name="tags[]" value="{{this}}" placeholder="Enter a tag">
+          <button class="button button-outline-danger" type="button"><i class='bx bx-trash'></i></button> 
         </div>
       {{/each}}
     </div>
-    <button class="btn btn-secondary mt-2" type="button" onclick="addTag()">Add</button>
+    <button class="button button-secondary mt-2 is-small" type="button" onclick="addTag()">Add</button>
   </div>
 
-  <div class="form-group actions d-flex justify-content-end my-2">
-    <button type='button' class='btn btn-text'><a href=".">Cancel</a></button>
-    <button type='submit' class='btn btn-primary'>{{#if isEdit}}Edit{{else}}Create{{/if}}</button>
+  <div class="field actions is-flex is-justify-content-end my-2 space-x-2">
+    <button type='button' class='button is-white'><a href=".">Cancel</a></button>
+    <button type='submit' class='button is-primary'>{{#if isEdit}}Edit{{else}}Create{{/if}}</button>
   </div>
 </form>
 
@@ -55,21 +68,21 @@
   function addTag() {
     const tagInputs = document.querySelector('#tags-input')
     const newTagEl = document.createElement('div');
-    newTagEl.setAttribute('class', 'col-6 tag-input d-flex space-x-2 align-items-center');
+    newTagEl.setAttribute('class', 'col-6 tag-input is-flex space-x-2 is-align-items-center');
 
     const inputEl = document.createElement('input');
     inputEl.setAttribute('type', 'text');
-    inputEl.setAttribute('class', 'form-control');
+    inputEl.setAttribute('class', '');
     inputEl.setAttribute('name', 'tags[]');
     inputEl.setAttribute('placeholder', 'Enter a tag');
 
-    const btnEl = document.createElement('button');
-    btnEl.setAttribute('class', 'btn btn-outline-danger');
-    btnEl.setAttribute('type', 'button');
-    btnEl.innerHTML = "<i class='bx bx-trash'></i>";
+    const buttonEl = document.createElement('button');
+    buttonEl.setAttribute('class', 'button button-outline-danger');
+    buttonEl.setAttribute('type', 'button');
+    buttonEl.innerHTML = "<i class='bx bx-trash'></i>";
 
     newTagEl.appendChild(inputEl);
-    newTagEl.appendChild(btnEl);
+    newTagEl.appendChild(buttonEl);
 
     tagInputs.appendChild(newTagEl)
   }

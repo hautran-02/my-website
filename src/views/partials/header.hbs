@@ -1,12 +1,22 @@
-<header class='d-flex flex-row text-white px-4 justify-content-between'>
-  <div class='d-flex flex-row align-items-center'>
+<header class='is-flex px-4 is-justify-content-space-between border-bottom'>
+  <div class='is-flex is-align-items-center'>
     <div class='header-logo d-inline'>
-      <h1 class='d-inline text-contrast'>HauTrank2</h1>
     </div>
-    <nav class='d-inline space-x-4 color-contrast' style="margin-left: 4rem;">
-      <a href='{{#unless (eq page 'home')}}/{{/unless}}' class="hover:underline {{#if (eq page 'home')}}active color-secondary{{/if}}">Home</a>
-      <a href='{{#unless (eq page 'blog')}}/blog{{/unless}}' class="hover:underline {{#if (eq page 'blog')}}active color-secondary{{/if}}">Blogs</a>
-      <a href='{{#unless (eq page 'admin/blog')}}/admin/blog{{/unless}}' class="hover:underline {{#if (eq page 'admin/blog')}}active color-secondary{{/if}}">Blog Management</a>
+    <nav class='navbar space-x-4' role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <h1 class='title d-inline text-contrast'>HauTrank2</h1>
+      </div>
+      <div class="navbar-start space-x-3 ml-6">
+        <a class="navbar-item {{#if (eq page 'home')}}is-selected{{/if}}" href='{{#unless (eq page 'home')}}/{{/unless}}'>
+          Home
+        </a>
+        <a class="navbar-item {{#if (eq page 'blog')}}is-selected{{/if}}" href='{{#unless (eq page 'blog')}}/blog{{/unless}}'>
+          Blog
+        </a>
+        <a class="navbar-item {{#if (eq page 'admin/blog')}}is-selected{{/if}}" href='{{#unless (eq page 'admin/blog')}}/admin/blog{{/unless}}'>
+          Blog Management
+        </a>
+      </div>
     </nav>
   </div>
   <div class='col'></div>

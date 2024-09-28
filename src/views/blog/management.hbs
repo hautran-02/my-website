@@ -1,5 +1,5 @@
-<div class='d-flex justify-content-end'>
-  <div class='btn btn-primary'><a href='/admin/blog/form'>Create</a></div>
+<div class='is-flex justify-content-end'>
+  <div class='button is-primary'><a href='/admin/blog/form'>Create</a></div>
 </div>
 <table class='table'>
   <thead>
@@ -24,46 +24,52 @@
             style='width: 64px; height: 64px;'
           /></td>
         <td>
-          <div class='d-flex flex-wrap space-x-2'>
+          <div class='is-flex flex-wrap space-x-2'>
             {{#each this.tags}}
-              <span style="font-size: 14px;" class='badge text-bg-info fw-medium'>{{this}}</span>
+              <span style='font-size: 14px;' class='tag is-link'>{{this}}</span>
             {{/each}}
           </div>
         </td>
         <td>
-          <div class='d-flex space-x-1'>
+          <div class='is-flex space-x-1'>
             {{#if this.active}}
               Active
             {{else}}
               Inactive
             {{/if}}
             <form
-              class='ms-1'
+              class='ml-1'
               action='/admin/blog/change-active/{{this._id}}'
               method='post'
             >
-              <button type='submit' class='btn btn-outline-dark'>
-                <i class='bx bx-rotate-right'></i>
+              <button type='submit' class='button'>
+                <span class='icon is-small'>
+                  <i class='bx bx-rotate-right'></i>
+                </span>
               </button>
             </form>
           </div>
         </td>
         <td>
-          <div class='d-flex space-x-2'>
-            <button type='button' class='btn btn-outline-dark'>
-              <a href='/admin/blog/form?edit=true&blogId={{this._id}}'>
-                <i class='bx bx-edit-alt'></i>
-              </a>
+          <div class='is-flex space-x-2'>
+            <button type='button' class='button'>
+              <span class='icon is-small'>
+                <a href='/admin/blog/form?edit=true&blogId={{this._id}}'>
+                  <i class='bx bx-edit-alt'></i>
+                </a>
+              </span>
             </button>
             <form action='/admin/blog-delete' method='POST'>
               <input value='{{this._id}}' name='blogId' type='hidden' />
               <button
                 type='button'
-                class='btn btn-outline-dark'
+                class='button'
                 data-bs-toggle='modal'
                 data-bs-target='#deleteBlogModal'
               >
-                <i class='bx bx-trash'></i>
+                <span class='icon is-small'>
+                  <i class='bx bx-trash'></i>
+                </span>
               </button>
               <div
                 class='modal fade'
@@ -79,7 +85,7 @@
                         blog</h1>
                       <button
                         type='button'
-                        class='btn-close'
+                        class='button-close'
                         data-bs-dismiss='modal'
                         aria-label='Close'
                       ></button>
@@ -91,22 +97,24 @@
                     <div class='modal-footer'>
                       <button
                         type='button'
-                        class='btn btn-secondary'
+                        class='button button-secondary'
                         data-bs-dismiss='modal'
                       >Close</button>
                       <button
                         type='submit'
-                        class='btn btn-primary'
+                        class='button button-primary'
                       >Confirm</button>
                     </div>
                   </div>
                 </div>
               </div>
             </form>
-            <button type='button' class='btn btn-outline-dark'>
-              <a href='/admin/blog/editor/{{this._id}}'>
-                <i class='bx bxs-edit'></i>
-              </a>
+            <button type='button' class='button'>
+              <span class='icon is-small'>
+                <a href='/admin/blog/editor/{{this._id}}'>
+                  <i class='bx bxs-edit'></i>
+                </a>
+              </span>
             </button>
           </div>
         </td>

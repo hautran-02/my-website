@@ -1,96 +1,92 @@
 @import 'variables'; // Import variables
 
-input,
-textarea {
-  &.input {
-    border: $thick-md solid $border-color;
-    padding: $size-xs $size-md;
-    border-radius: $size-xs;
-    color: $primary-color;
+// input,
+// textarea {
+//   &.input {
+//     border: map-get($thickness, md) solid $border-color;
+//     padding: map-get($sizes, xs) map-get($sizes, md);
+//     border-radius: map-get($sizes, xs);
+//     color: map-get($primary-colors, base);
 
-    &:hover {
-      border-color: $primary-color;
-    }
+//     &:hover {
+//       border-color: map-get($primary-colors, base);
+//     }
 
-    &:focus-visible {
-      outline: $thick-xs solid $primary-color; /* Removes default focus outline */
-    }
-  }
-}
+//     &:focus-visible {
+//       outline: map-get($thickness, xs) solid map-get($primary-colors, base); /* Removes default focus outline */
+//     }
+//   }
+// }
 
-form {
-  .form-item {
-    display: grid;
+// button {
+//   &.btn {
+//     padding: map-get($sizes, xs) map-get($sizes, md);
+//     border: map-get($thickness, md) solid $border-color;
+//     border-radius: map-get($sizes, xs);
+//     color: map-get($neutral-colors, 1);
 
-    &:not(:first-child) {
-      margin-top: $size-md;
-    }
+//     i {
+//       font-size: 1rem;
+//     }
 
-    &.actions {
-      display: flex;
-      flex-direction: row;
-      justify-content: end;
-      gap: $size-md;
-    }
-  }
+//     &:hover {
+//       border-color: map-get($primary-colors, base);
+//       color: map-get($primary-colors, base);
+//     }
 
-  label {
-  }
+//     &.btn-primary {
+//       background-color: map-get($primary-colors, base);
+//       color: map-get($neutral-colors, 10);
+//       border: none;
+//       &:hover {
+//         border: none;
+//         background-color: map-get($primary-colors, light);
+//       }
+//     }
 
-  .form-control {
-    margin-top: $size-xs;
-  }
+//     &.btn-secondary {
+//       background-color: map-get($secondary-colors, base);
+//       color: map-get($neutral-colors, 1);
+//       border: none;
+//       &:hover {
+//         background-color: map-get($secondary-colors, light);
+//       }
+//     }
 
-  .form-error {
-    color: $danger-color;
-  }
-}
+//     &.btn-text {
+//       color: map-get($neutral-colors, 1);
+//       border: none;
+//       &:hover {
+//         background-color: map-get($neutral-colors, 9);
+//       }
+//     }
+//   }
+// }
 
-.space-x-0-5 {
-  > * + * {
-    margin-left: 0.5 * $size-xs;
-  }
-}
+// form {
+//   .form-item {
+//     display: grid;
 
-.space-x-1 {
-  > * + * {
-    margin-left: 1 * $size-xs;
-  }
-}
+//     &:not(:first-child) {
+//       margin-top: map-get($thickness, md);
+//     }
 
-.space-x-2 {
-  > * + * {
-    margin-left: 2 * $size-xs;
-  }
-}
+//     &.actions {
+//       display: flex;
+//       flex-direction: row;
+//       justify-content: end;
+//       gap: map-get($thickness, md);
+//     }
+//   }
 
-.space-x-3 {
-  > * + * {
-    margin-left: 3 * $size-xs;
-  }
-}
+//   label {
+//   }
 
-.space-x-4 {
-  > * + * {
-    margin-left: 3 * $size-xs;
-  }
-}
+//   .form-control {
+//     margin-top: map-get($sizes, xs);
+//   }
 
-// Similarly for vertical spacing (space-y)
-.space-y-1 {
-  > * + * {
-    margin-top: 1 * $size-xs;
-  }
-}
-
-.space-y-2 {
-  > * + * {
-    margin-top: 2 * $size-xs;
-  }
-}
-
-.space-y-3 {
-  > * + * {
-    margin-top: 3 * $size-xs;
-  }
-}
+//   .form-error {
+//     color: map-get($danger-colors, base);
+//   }
+// }
