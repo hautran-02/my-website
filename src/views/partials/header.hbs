@@ -7,15 +7,11 @@
         <h1 class='title d-inline text-contrast'>HauTrank2</h1>
       </div>
       <div class="navbar-start space-x-3 ml-6">
-        <a class="navbar-item {{#if (eq page 'home')}}is-selected{{/if}}" href='{{#unless (eq page 'home')}}/{{/unless}}'>
-          Home
-        </a>
-        <a class="navbar-item {{#if (eq page 'blog')}}is-selected{{/if}}" href='{{#unless (eq page 'blog')}}/blog{{/unless}}'>
-          Blog
-        </a>
-        <a class="navbar-item {{#if (eq page 'admin/blog')}}is-selected{{/if}}" href='{{#unless (eq page 'admin/blog')}}/admin/blog{{/unless}}'>
-          Blog Management
-        </a>
+        {{#each navbars}}
+          <a class="navbar-item {{this.pageName}} {{../page}} {{#if (eq ../page this.pageName)}}is-selected{{/if}}" href='{{#if (eq ../page this.pageName)}}#{{else}}{{this.path}}{{/if}}'>
+            {{this.title}}
+          </a>
+        {{/each}}
       </div>
     </nav>
   </div>

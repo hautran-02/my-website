@@ -1,4 +1,4 @@
-import { BLOG_TABLE } from '~/constants/blog';
+import { BLOG_TABLE, NAV_BARS } from '~/constants/blog';
 import { Blog } from '~/models/blog';
 import { BlogContent } from '~/models/blogContent';
 import { BlogEditorSession } from '~/models/BlogEditorSession';
@@ -8,13 +8,13 @@ import { transformErrorArrayToErrorForm } from '~/validators';
 const blogController = {};
 
 blogController.viewHome = (req, res) => {
-  res.render('home', { page: 'home' });
+  res.render('home', { page: 'home', navbars: NAV_BARS });
 };
 
 blogController.viewBlog = async (req, res) => {
   try {
     const blogs = await Blog.find({ active: true }).lean();
-    res.render('blog/index', { page: 'blog', blogs });
+    res.render('blog/index', { page: 'blog', navbars: NAV_BARS, blogs });
   } catch (error) {
     console.log(error);
   }
@@ -31,7 +31,12 @@ blogController.viewBlogContent = async (req, res) => {
     }
     const blogCtnId = blog.blogContents.quill;
     const blogContent = await BlogContent.findById(blogCtnId).lean();
-    res.render('blog/view', { content: JSON.stringify(blogContent.content) });
+    res.render('blog/view', {
+      page: 'blog',
+      navbars: NAV_BARS,
+      content: JSON.stringify(blogContent.content),
+      blog,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -47,6 +52,8 @@ blogController.viewBlogForm = async (req, res, next) => {
       values = blog;
     }
     res.render('blog/form', {
+      page: 'admin/blog',
+      navbars: NAV_BARS,
       formErrors: req.validationErrors,
       values,
       isEdit,
@@ -65,6 +72,7 @@ blogController.viewBlogEditor = async (req, res, next) => {
       const blogContent = await BlogContent.findById(blogContentId);
       res.render('blog/editor', {
         blog,
+        navbars: NAV_BARS,
         content: JSON.stringify(blogContent.content),
         blogContentId,
       });
@@ -137,6 +145,7 @@ blogController.viewBlogManagement = async (req, res, next) => {
     const data = await Blog.find().lean();
     res.render('blog/management', {
       page: 'admin/blog',
+      navbars: NAV_BARS,
       columns: BLOG_TABLE,
       data,
     });
@@ -192,6 +201,7 @@ blogController.createBlog = async (req, res, next) => {
     };
     const formError = transformErrorArrayToErrorForm(req.validationErrors);
     res.render('blog/form', {
+      navbars: NAV_BARS,
       formError,
       values,
     });
@@ -236,6 +246,7 @@ blogController.editBlog = async (req, res, next) => {
     };
     const formError = transformErrorArrayToErrorForm(req.validationErrors);
     res.render('blog/form', {
+      navbars: NAV_BARS,
       formError,
       values,
     });

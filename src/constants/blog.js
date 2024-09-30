@@ -20,3 +20,26 @@ export const BLOG_TABLE = [
     title: 'Tags',
   },
 ];
+
+export const NAV_BARS = [
+  {
+    pageName: 'home',
+    path: '/',
+    title: 'Home',
+  },
+  {
+    pageName: 'blog',
+    path: '/blog',
+    title: 'Blogs',
+  },
+  {
+    pageName: 'admin/blog',
+    path: '/admin/blog',
+    title: 'Blog Management',
+  },
+  {
+    pageName: 'about',
+    path: '/about',
+    title: 'About',
+  },
+];

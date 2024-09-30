@@ -1,12 +1,12 @@
 <div class='is-flex justify-content-end'>
   <div class='button is-primary'><a href='/admin/blog/form'>Create</a></div>
 </div>
-<table class='table'>
+<table class='table w-100'>
   <thead>
     <tr>
       <th scope='col'>#</th>
       {{#each columns}}
-        <th scope='col'>{{this.title}}</th>
+        <th class='th-{{this.key}}' scope='col'>{{this.title}}</th>
       {{/each}}
       <th scope='col'></th>
     </tr>
@@ -17,16 +17,19 @@
         <td scope='row'>{{math @index '+' 1}}</td>
         <td>{{this.title}}</td>
         <td>{{this.description}}</td>
-        <td><img
+        <td class='td-imageUrl'><img
             src='{{this.imageUrl}}'
             class='img-thumbnail'
             alt='{{this.title}}'
             style='width: 64px; height: 64px;'
           /></td>
         <td>
-          <div class='is-flex flex-wrap space-x-2'>
+          <div class='is-flex is-flex-wrap-wrap' style='gap: 4px'>
             {{#each this.tags}}
-              <span style='font-size: 14px;' class='tag is-link'>{{this}}</span>
+              <span
+                style='font-size: 14px;'
+                class='tag is-link is-light'
+              >{{this}}</span>
             {{/each}}
           </div>
         </td>
@@ -61,53 +64,35 @@
             </button>
             <form action='/admin/blog-delete' method='POST'>
               <input value='{{this._id}}' name='blogId' type='hidden' />
+              <div id='deleteBlogModal' class='modal'>
+                <div class='modal-background'></div>
+                <div class='modal-card'>
+                  <header class='modal-card-head'>
+                    <p class='modal-card-title'>Delete Blog</p>
+                    <button class='delete' aria-label='close'></button>
+                  </header>
+                  <section class='modal-card-body'>
+                    Are you sure ?
+                  </section>
+                  <footer class='modal-card-foot'>
+                    <div class='buttons'>
+                      <button class='button is-white'>Cancel</button>
+                      <button class='button is-danger'>Confirm</button>
+                    </div>
+                  </footer>
+                </div>
+                <!-- Any other Bulma elements you want -->
+              </div>
               <button
                 type='button'
-                class='button'
+                class='button js-modal-trigger'
+                data-target='deleteBlogModal'
                 data-bs-toggle='modal'
-                data-bs-target='#deleteBlogModal'
               >
                 <span class='icon is-small'>
                   <i class='bx bx-trash'></i>
                 </span>
               </button>
-              <div
-                class='modal fade'
-                id='deleteBlogModal'
-                tabindex='-1'
-                aria-labelledby='exampleModalLabel'
-                aria-hidden='true'
-              >
-                <div class='modal-dialog modal-dialog-centered'>
-                  <div class='modal-content'>
-                    <div class='modal-header'>
-                      <h1 class='modal-title fs-5' id='exampleModalLabel'>Delete
-                        blog</h1>
-                      <button
-                        type='button'
-                        class='button-close'
-                        data-bs-dismiss='modal'
-                        aria-label='Close'
-                      ></button>
-                    </div>
-                    <div class='modal-body'>
-                      Do you want to delete blog
-                      {{this._id}}
-                    </div>
-                    <div class='modal-footer'>
-                      <button
-                        type='button'
-                        class='button button-secondary'
-                        data-bs-dismiss='modal'
-                      >Close</button>
-                      <button
-                        type='submit'
-                        class='button button-primary'
-                      >Confirm</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </form>
             <button type='button' class='button'>
               <span class='icon is-small'>

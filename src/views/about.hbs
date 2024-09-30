@@ -1,0 +1,27 @@
+<div class='columns is-desktop is-widescreen is-fullhd g-2'>
+  <div class='column'>
+    <figure class='image' style='width: 240px;'>
+      <img src='/img/avt.jpg' alt='My avatar' class='is-rounded' />
+    </figure>
+    <br />
+    <p class='title is-3'>Tran Trung Hau</p>
+    <p class='subtitle is-5'>Web developer</p>
+    <div class='contact space-y-1'>
+      {{#each contactInfors}}
+        <div class='is-flex is-align-items-center {{this.key}} space-x-1'>
+          <i class='{{this.icon}} has-text-grey bx-fw'></i>
+          {{#if this.disable}}
+            <p class='is-size-6 has-text-grey-dark'>{{this.value}}</p>
+          {{else}}
+            <a href='{{this.value}}' class='is-size-6 has-text-grey-dark'>{{#if
+                this.label
+              }}{{this.label}}{{else}}{{this.value}}{{/if}}</a>
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  <div class='column'>
+
+  </div>
+</div>

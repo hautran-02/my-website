@@ -1,5 +1,117 @@
 @import 'variables'; // Import variables
 
+#editor-result {
+  border: none;
+
+  & > * {
+    font-family:
+      Inter,
+      SF Pro,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Helvetica Neue,
+      Helvetica,
+      Arial,
+      sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 2.5rem; /* 48px if 1rem = 16px */
+  }
+
+  h2 {
+    font-size: 2rem; /* 40px */
+  }
+
+  h3 {
+    font-size: 1.75rem; /* 32px */
+  }
+
+  h4 {
+    font-size: 1.5rem; /* 28px */
+  }
+
+  h5 {
+    font-size: 1.25rem; /* 24px */
+  }
+
+  h6 {
+    font-size: 1.125rem; /* 20px */
+  }
+
+  p {
+    font-size: 1rem; /* 18px */
+    &:has(img) {
+      display: flex;
+      justify-content: center;
+      img {
+        max-width: 40%;
+      }
+    }
+  }
+
+  ul,
+  ol {
+    li {
+      font-size: 1rem;
+    }
+  }
+
+  blockquote {
+    font-size: 1.25rem; /* 20px */
+    font-style: italic;
+  }
+
+  .ql-code-block-container {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-left: 4px solid #e3a689;
+    color: #000;
+    font-size: 1rem;
+  }
+}
+
+table {
+  th {
+    &.th-imageUrl {
+      min-width: 100px;
+    }
+  }
+  td {
+    &.td-imageUrl {
+      min-width: 100px;
+    }
+  }
+
+  img {
+    object-fit: contain;
+  }
+}
+
+.blog-card {
+  .content {
+    display: -webkit-box; /* Enables the webkit box layout model */
+    -webkit-box-orient: vertical; /* Sets the orientation to vertical */
+    -webkit-line-clamp: 3; /* Limits the text to 3 lines */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds the ellipsis (...) */
+    line-height: 1.5; /* Adjust line height for spacing */
+    max-height: calc(1.5em * 3); /* Height to accommodate 3 lines */
+    white-space: normal;
+  }
+}
+
 // input,
 // textarea {
 //   &.input {

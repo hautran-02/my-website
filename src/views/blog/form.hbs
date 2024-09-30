@@ -32,7 +32,7 @@
           <span class="file-icon">
             <i class="fas fa-upload"></i>
           </span>
-          <span class="file-label"> Choose a image.., </span>
+          <span class="file-label">Choose a image...</span>
         </span>
       </label>
     </div>
@@ -47,11 +47,11 @@
 
   <div class="field">
     <label class="label"for="tags-input">Tags</label>
-    <div id="tags-input" class="row gx-3 gy-2">
+    <div id="tags-input" class="columns gx-3 gy-2 is-flex-wrap-wrap">
       {{#each values.tags}}
-        <div class="tag-input col-6 is-flex space-x-2 is-align-items-center">
-          <input type="text" class="" name="tags[]" value="{{this}}" placeholder="Enter a tag">
-          <button class="button button-outline-danger" type="button"><i class='bx bx-trash'></i></button> 
+        <div class="tag-input column is-6 tag-input is-flex space-x-2 is-align-items-center">
+          <input type="text" class="input is-small" name="tags[]" value="{{this}}" placeholder="Enter a tag">
+          <button class="button is-danger is-small is-outlined" type="button"><i class='bx bx-trash'></i></button> 
         </div>
       {{/each}}
     </div>
@@ -68,16 +68,16 @@
   function addTag() {
     const tagInputs = document.querySelector('#tags-input')
     const newTagEl = document.createElement('div');
-    newTagEl.setAttribute('class', 'col-6 tag-input is-flex space-x-2 is-align-items-center');
+    newTagEl.setAttribute('class', 'column is-6 tag-input is-flex space-x-2 is-align-items-center');
 
     const inputEl = document.createElement('input');
     inputEl.setAttribute('type', 'text');
-    inputEl.setAttribute('class', '');
+    inputEl.setAttribute('class', 'input is-small');
     inputEl.setAttribute('name', 'tags[]');
     inputEl.setAttribute('placeholder', 'Enter a tag');
 
     const buttonEl = document.createElement('button');
-    buttonEl.setAttribute('class', 'button button-outline-danger');
+    buttonEl.setAttribute('class', 'button is-danger is-small is-outlined');
     buttonEl.setAttribute('type', 'button');
     buttonEl.innerHTML = "<i class='bx bx-trash'></i>";
 

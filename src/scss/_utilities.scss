@@ -1,5 +1,9 @@
 @import 'variables';
 
+.w-100 {
+   width: 100%;
+}
+
 .border {
   border: 1px solid map-get($neutral-colors, 9);
 }

@@ -1,36 +1,32 @@
-<div class="columns">
+<div class="columns is-8">
   {{#if blogs.length}}
     {{#each blogs}}
-      <div class='column is-one-third is-col-min-1'>
-        <article
-          class='card card-blog rounded-4 col-span-3 border'
-        >
-          <div class='card-header border-bottom p-3 is-flex is-justify-content-space-between'>
-            <h4>{{this.title}}</h4>
-            <span>{{formatDate this.createdAt null}}</span>
-          </div>
-          <div class='card-body p-3'>
-            <img
-              src='{{this.imageUrl}}'
-              alt='{{this.title}}'
-              style='height: 180px;'
-              class='py-2 object-fit-contain w-100'
-            />
-            <p class='text-neutral-600'>{{this.description}}</p>
-          </div>
-          <div class='card-footer p-3 border-top is-flex is-justify-content-space-between'>
-            <div class='space-x-2 flex'>
-              <button class='button is-primary'><a href="/blog/view/{{this._id}}">View</a></button>
+      <div class="column">
+        <div class="card blog-card column is-4" style="height: 524px;">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src='{{this.imageUrl}}'
+                alt='{{this.title}}'
+                class="has-background-primary-95"
+              />
+            </figure>
             </div>
-            <div class='space-x-2 flex'>
-              <button class='button'>
-                <span class='icon is-small'>
-                  <i class='bx bx-cog'></i>
-                </span>
-              </button>
+            <div class="card-content px-0">
+              <div class="media mb-2">
+                <div class="">
+                  <p class="subtitle is-6">{{formatDate this.createdAt ''}}</p>
+                  <p class="title is-4">{{this.title}}</p>
+                </div>
+                <div class="media-content">
+                </div>
+              </div>
+              <div class="content">{{this.description}}</div>
+              <div class="actions">
+                <button class="button"><a href="/blog/view/{{this._id}}"><i class='bx bx-book-open'></i></a></button>
+              </div>
             </div>
-          </div>
-        </article>
+        </div>
       </div>
     {{/each}}
   {{else}}
