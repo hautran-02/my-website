@@ -1,88 +1,204 @@
 @import 'variables'; // Import variables
 
-input,
-textarea {
-  &.input {
-    border: $thick-md solid $border-color;
-    padding: $size-xs $size-md;
-    border-radius: $size-xs;
-    color: $primary-color;
+#editor-result {
+  border: none;
 
-    &:hover {
-      border-color: $primary-color;
-    }
-
-    &:focus-visible {
-      outline: $thick-xs solid $primary-color; /* Removes default focus outline */
-    }
+  & > * {
+    font-family:
+      Inter,
+      SF Pro,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Helvetica Neue,
+      Helvetica,
+      Arial,
+      sans-serif;
   }
-}
 
-form {
-  .form-item {
-    display: grid;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
 
-    &:not(:first-child) {
-      margin-top: $size-md;
-    }
+  h1 {
+    font-size: 2.5rem; /* 48px if 1rem = 16px */
+  }
 
-    &.actions {
+  h2 {
+    font-size: 2rem; /* 40px */
+  }
+
+  h3 {
+    font-size: 1.75rem; /* 32px */
+  }
+
+  h4 {
+    font-size: 1.5rem; /* 28px */
+  }
+
+  h5 {
+    font-size: 1.25rem; /* 24px */
+  }
+
+  h6 {
+    font-size: 1.125rem; /* 20px */
+  }
+
+  p {
+    font-size: 1rem; /* 18px */
+    &:has(img) {
       display: flex;
-      flex-direction: row;
-      justify-content: end;
-      gap: $size-md;
+      justify-content: center;
+      img {
+        max-width: 40%;
+      }
     }
   }
 
-  label {
+  ul,
+  ol {
+    li {
+      font-size: 1rem;
+    }
   }
 
-  .form-control {
-    margin-top: $size-xs;
+  blockquote {
+    font-size: 1.25rem; /* 20px */
+    font-style: italic;
+  }
+
+  .ql-code-block-container {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-left: 4px solid #e3a689;
+    color: #000;
+    font-size: 1rem;
   }
 }
 
-button {
-  &.btn {
-    padding: $size-xs $size-md;
-    border: $thick-md solid $border-color;
-    border-radius: $size-xs;
-    color: $neutral-1;
-
-    i {
-      font-size: 1.55rem;
-    }
-
-    &:hover {
-      border-color: $primary-color;
-      color: $primary-color;
-    }
-
-    &.btn-primary {
-      background-color: $primary-color;
-      color: $neutral-10;
-      border: none;
-      &:hover {
-        border: none;
-        background-color: $primary-color-light;
-      }
-    }
-
-    &.btn-secondary {
-      background-color: $secondary-color;
-      color: $neutral;
-      border: none;
-      &:hover {
-        background-color: $secondary-color-light;
-      }
-    }
-
-    &.btn-text {
-      color: $neutral;
-      border: none;
-      &:hover {
-        background-color: $neutral-9;
-      }
+table {
+  th {
+    &.th-imageUrl {
+      min-width: 100px;
     }
   }
+  td {
+    &.td-imageUrl {
+      min-width: 100px;
+    }
+  }
+
+  img {
+    object-fit: contain;
+  }
 }
+
+.blog-card {
+  .content {
+    display: -webkit-box; /* Enables the webkit box layout model */
+    -webkit-box-orient: vertical; /* Sets the orientation to vertical */
+    -webkit-line-clamp: 3; /* Limits the text to 3 lines */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds the ellipsis (...) */
+    line-height: 1.5; /* Adjust line height for spacing */
+    max-height: calc(1.5em * 3); /* Height to accommodate 3 lines */
+    white-space: normal;
+  }
+}
+
+// input,
+// textarea {
+//   &.input {
+//     border: map-get($thickness, md) solid $border-color;
+//     padding: map-get($sizes, xs) map-get($sizes, md);
+//     border-radius: map-get($sizes, xs);
+//     color: map-get($primary-colors, base);
+
+//     &:hover {
+//       border-color: map-get($primary-colors, base);
+//     }
+
+//     &:focus-visible {
+//       outline: map-get($thickness, xs) solid map-get($primary-colors, base); /* Removes default focus outline */
+//     }
+//   }
+// }
+
+// button {
+//   &.btn {
+//     padding: map-get($sizes, xs) map-get($sizes, md);
+//     border: map-get($thickness, md) solid $border-color;
+//     border-radius: map-get($sizes, xs);
+//     color: map-get($neutral-colors, 1);
+
+//     i {
+//       font-size: 1rem;
+//     }
+
+//     &:hover {
+//       border-color: map-get($primary-colors, base);
+//       color: map-get($primary-colors, base);
+//     }
+
+//     &.btn-primary {
+//       background-color: map-get($primary-colors, base);
+//       color: map-get($neutral-colors, 10);
+//       border: none;
+//       &:hover {
+//         border: none;
+//         background-color: map-get($primary-colors, light);
+//       }
+//     }
+
+//     &.btn-secondary {
+//       background-color: map-get($secondary-colors, base);
+//       color: map-get($neutral-colors, 1);
+//       border: none;
+//       &:hover {
+//         background-color: map-get($secondary-colors, light);
+//       }
+//     }
+
+//     &.btn-text {
+//       color: map-get($neutral-colors, 1);
+//       border: none;
+//       &:hover {
+//         background-color: map-get($neutral-colors, 9);
+//       }
+//     }
+//   }
+// }
+
+// form {
+//   .form-item {
+//     display: grid;
+
+//     &:not(:first-child) {
+//       margin-top: map-get($thickness, md);
+//     }
+
+//     &.actions {
+//       display: flex;
+//       flex-direction: row;
+//       justify-content: end;
+//       gap: map-get($thickness, md);
+//     }
+//   }
+
+//   label {
+//   }
+
+//   .form-control {
+//     margin-top: map-get($sizes, xs);
+//   }
+
+//   .form-error {
+//     color: map-get($danger-colors, base);
+//   }
+// }

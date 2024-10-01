@@ -4,8 +4,13 @@ const Schema = mongoose.Schema;
 
 const blogSchema = new Schema(
   {
-    content: {
+    type: {
       type: String,
+      default: 'markdown',
+      enum: ['markdown', 'quill'],
+    },
+    content: {
+      type: Schema.Types.Mixed,
       default: '',
     },
     // Add timestamps for createdAt and updatedAt fields
@@ -13,4 +18,4 @@ const blogSchema = new Schema(
   { timestamps: true, collection: 'BlogContent' }
 );
 
-export const ContentBlog = mongoose.model('BlogContent', blogSchema);
+export const BlogContent = mongoose.model('BlogContent', blogSchema);

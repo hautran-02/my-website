@@ -1,6 +1,7 @@
 @import 'variables'; // Import variables
-@import 'variables'; // Import variables
 @import 'components';
+@import 'custome-bs';
+@import 'utilities';
 
 * {
   margin: 0;
@@ -8,24 +9,53 @@
   box-sizing: border-box;
 }
 
+:root {
+}
+
 /* Layout for header, main, and footer */
 body {
   font-family: Helvetica, sans-serif;
   line-height: 1.6;
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin-bottom: 0;
+  }
+
+  --bulma-primary-h: 198;
+  --bulma-primary-s: 100%;
+  --bulma-primary-l: 70%;
 }
 
 header {
-  background-color: $primary-color;
   height: 64px;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
   nav {
-    a.active {
-      &:hover {
-        text-decoration: none;
-        cursor: auto;
+    .navbar-start {
+      align-items: center;
+      .navbar-item {
+        border-radius: 8px;
+        &.is-selected {
+          color: map-get($primary-colors, dark);
+          background-color: map-get($primary-colors, light);
+        }
       }
     }
   }
@@ -37,10 +67,14 @@ main {
   padding: 32px 0;
 }
 
-.text-primary {
-  color: $primary-color;
-}
+// .color-primary {
+//   color: map-get($primary-colors, base);
+// }
 
-.text-secondary {
-  color: $secondary-color;
-}
+// .color-secondary {
+//   color: map-get($secondary-colors, base);
+// }
+
+// .color-contrast {
+//   color: map-get($neutral-colors, 10);
+// }

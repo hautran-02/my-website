@@ -1,12 +1,19 @@
-<header class='flex flex-row text-white px-4'>
-  <div class='col flex flex-row align-center items-center'>
-    <div class='header-logo inline'>
-      <h1 class='inline text-4xl'>HauTrank2</h1>
+<header class='is-flex px-4 is-justify-content-space-between border-bottom'>
+  <div class='is-flex is-align-items-center'>
+    <div class='header-logo d-inline'>
     </div>
-    <nav class='inline ms-24 space-x-4'>
-      <a href='{{#unless (eq page 'home')}}/{{/unless}}' class="hover:underline {{#if (eq page 'home')}}active text-secondary{{/if}}">Home</a>
-      <a href='{{#unless (eq page 'blog')}}/blog{{/unless}}' class="hover:underline {{#if (eq page 'blog')}}active text-secondary{{/if}}">Blogs</a>
+    <nav class='navbar space-x-4' role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <h1 class='title d-inline text-contrast'>HauTrank2</h1>
+      </div>
+      <div class="navbar-start space-x-3 ml-6">
+        {{#each navbars}}
+          <a class="navbar-item {{this.pageName}} {{../page}} {{#if (eq ../page this.pageName)}}is-selected{{/if}}" href='{{#if (eq ../page this.pageName)}}#{{else}}{{this.path}}{{/if}}'>
+            {{this.title}}
+          </a>
+        {{/each}}
+      </div>
     </nav>
-    <div class='col'></div>
   </div>
+  <div class='col'></div>
 </header>
